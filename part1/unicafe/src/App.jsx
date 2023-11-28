@@ -1,21 +1,24 @@
 import { useState } from 'react'
 
-const Header = ({header}) => {
+const Header = ({ header }) => {
   return (
     <h1>{header}</h1>
   );
 };
 
-const Display = ({ counterG, counterB, counterN }) => {
+const Display = ({ counterG, counterB, counterN,
+  counterAll, counterA, counterP }) => {
   return (
-    <div> 
+    <div>
       <p>good {counterG} </p>
       <p>neutral {counterN} </p>
       <p>bad {counterB} </p>
+      <p>all {counterAll}</p>
+      <p>average {counterA} </p>
+      <p>positive {counterP}%</p>
     </div>
   )
 }
-
 
 const Button = ({ handleClick, text }) => (
   <button onClick={handleClick}>
@@ -28,17 +31,30 @@ const App = () => {
   const header = "give feedback"
   const header2 = "statistics"
 
-  const [ good, setCounter ] = useState(0)  
-  const [ neutral, setCounter2 ] = useState(0)
-  const [ bad, setCounter3 ] = useState(0)
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-  const increaseGood = () => setCounter(good + 1)
-  const increaseNeutral = () => setCounter2(neutral + 1)
-  const increaseBad = () => setCounter3(bad + 1)
+  const increaseGood = () => {
+    setGood(good + 1)
+  }
+
+  const increaseNeutral = () => {
+    setNeutral(neutral + 1)  
+  }
+
+  const increaseBad = () => {
+    setBad(bad + 1);
+  }
+
+  const all = (good + neutral + bad)
+  const average = ((good + (neutral * 0) + (bad * (-1))) / all).toFixed(1);
+  const positive = ((good / all) * 100).toFixed(1)
+
 
   return (
     <div>
-      <Header header = {header} />
+      <Header header={header} />
 
       <Button
         handleClick={increaseGood}
@@ -47,15 +63,17 @@ const App = () => {
       <Button
         handleClick={increaseNeutral}
         text='neutral'
-      />     
+      />
       <Button
         handleClick={increaseBad}
         text='bad'
       />
 
-      <Header header = {header2}/>          
-          
-      <Display counterG={good} counterN={neutral} counterB={bad}/>
+      <Header header={header2} />
+
+      <Display counterG={good} counterN={neutral}
+        counterB={bad} counterAll={all} counterA={average}
+        counterP={positive} />
     </div>
   )
 }
