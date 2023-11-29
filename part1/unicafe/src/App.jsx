@@ -3,20 +3,19 @@ import React, { useState } from 'react';
 const Header = ({ header }) => {
   return (
     <h1>{header}</h1>
-  );
-};
+  )
+}
 
 const Statistics = (props) => {
- 
   const { good, neutral, bad } = props;
 
-  const sum = good + neutral + bad
-  if (sum == 0) {
-    return(      
-    <div>
-      <p>no feedback given</p>
-    </div>
-    )    
+  const sum = good + neutral + bad;
+  if (sum === 0) {
+    return (
+      <div>
+        <p>no feedback given</p>
+      </div>
+    )
   }
 
   const all = good + neutral + bad;
@@ -25,37 +24,32 @@ const Statistics = (props) => {
 
   return (
     <div>
-      <Display
-        counterG={good}
-        counterN={neutral}
-        counterB={bad}
-        counterAll={all}
-        counterA={average}
-        counterP={positive}
-      />
+      <StatisticLine text="good" value ={good} />
+      <StatisticLine text="neutral" value ={neutral} />
+      <StatisticLine text="bad" value ={bad} />
+      <StatisticLine text="all" value ={all} />
+      <StatisticLine text="average" value ={average} />
+      <StatisticLine text="positive" value ={positive + "%"} />
     </div>
-  );
-};
+  )
+}
 
-const Display = ({ counterG, counterB, counterN, 
-                    counterAll, counterA, counterP }) => {
+const StatisticLine = (props) => {
+
   return (
     <div>
-      <p>good {counterG} </p>
-      <p>neutral {counterN} </p>
-      <p>bad {counterB} </p>
-      <p>all {counterAll}</p>
-      <p>average {counterA} </p>
-      <p>positive {counterP}%</p>
+      <p>
+        {props.text} {props.value}
+      </p>
     </div>
-  );
-};
+  )
+}
 
 const Button = ({ handleClick, text }) => (
   <button onClick={handleClick}>
     {text}
   </button>
-);
+)
 
 const App = () => {
   const header = "give feedback";
@@ -67,15 +61,15 @@ const App = () => {
 
   const increaseGood = () => {
     setGood(good + 1);
-  };
+  }
 
   const increaseNeutral = () => {
     setNeutral(neutral + 1);
-  };
+  }
 
   const increaseBad = () => {
     setBad(bad + 1);
-  };
+  }
 
   return (
     <div>
@@ -89,7 +83,7 @@ const App = () => {
 
       <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
-  );
-};
+  )
+}
 
 export default App;
