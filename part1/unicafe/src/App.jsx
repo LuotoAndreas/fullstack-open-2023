@@ -23,25 +23,26 @@ const Statistics = (props) => {
   const positive = ((good / all) * 100).toFixed(1);
 
   return (
-    <div>
+    <table>
+      <tbody>
       <StatisticLine text="good" value ={good} />
       <StatisticLine text="neutral" value ={neutral} />
       <StatisticLine text="bad" value ={bad} />
       <StatisticLine text="all" value ={all} />
       <StatisticLine text="average" value ={average} />
       <StatisticLine text="positive" value ={positive + "%"} />
-    </div>
+      </tbody>      
+    </table>
   )
 }
 
 const StatisticLine = (props) => {
 
   return (
-    <div>
-      <p>
-        {props.text} {props.value}
-      </p>
-    </div>
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value}</td>
+    </tr>
   )
 }
 
