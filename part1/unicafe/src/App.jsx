@@ -7,7 +7,17 @@ const Header = ({ header }) => {
 };
 
 const Statistics = (props) => {
+ 
   const { good, neutral, bad } = props;
+
+  const sum = good + neutral + bad
+  if (sum == 0) {
+    return(      
+    <div>
+      <p>no feedback given</p>
+    </div>
+    )    
+  }
 
   const all = good + neutral + bad;
   const average = ((good + neutral * 0 + bad * -1) / all).toFixed(1);
