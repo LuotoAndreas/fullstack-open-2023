@@ -1,0 +1,24 @@
+{
+  "persons": [
+    {
+      "name": "Antti Aaltonen",
+      "number": "050-1234567",
+      "id": 7
+    },
+    {
+      "name": "Ella Eskelinen",
+      "number": "045-2345678",
+      "id": 8
+    },
+    {
+      "name": "Mikko Mäkinen",
+      "number": "040-3456789",
+      "id": 9
+    },
+    {
+      "name": "Henna Hämäläinen",
+      "number": "050-4567890",
+      "id": 10
+    }
+  ]
+}
