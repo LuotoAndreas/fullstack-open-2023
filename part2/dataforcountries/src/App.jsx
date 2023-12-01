@@ -34,7 +34,7 @@ const App = () => {
       const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
       const data = await response.json();
 
-      setSelectedCountryInfo(data[0]); // Assuming the API returns information for only one country
+      setSelectedCountryInfo(data[0]); 
     } catch (error) {
       console.error('Error fetching country info:', error);
     }
